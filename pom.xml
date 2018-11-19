@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.karibu</groupId>
+    <artifactId>tbx</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>myMavenRepo</id>
+            <url>${myMavenRepoReadUrl}</url>
+        </repository>
+    </repositories>
+
+    <scm>
+        <connection>scm:git:https://github.com/rumakt/tbx.git</connection>
+        <url>https://github.com/rumakt/tbx</url>
+        <developerConnection>scm:git:https://github.com/rumakt/tbx.git</developerConnection>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepo</id>
+            <url>${myMavenRepoWriteUrl}</url>
+        </repository>
+        <snapshotRepository>
+            <id>myMavenRepo</id>
+            <url>${myMavenRepoWriteUrl}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.11.1</version>
+                <configuration>
+                    <tag>${project.name}-${project.version}</tag>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>myMavenRepo</id>
+            <activation>
+                <property>
+                    <name>!doNotUseMyMavenRepo</name>
+                </property>
+            </activation>
+            <properties>
+                <myMavenRepoReadUrl>https://mymavenrepo.com/repo/RI53xUAGqrZxOjxWLXRQ/</myMavenRepoReadUrl>
+                <myMavenRepoWriteUrl>https://mymavenrepo.com/repo/FKky0YoiTJJz52TzokPp/</myMavenRepoWriteUrl>
+            </properties>
+        </profile>
+    </profiles>
+
+
+</project>
